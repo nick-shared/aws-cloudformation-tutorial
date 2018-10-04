@@ -1,0 +1,48 @@
+exports.handler = async (event) => {
+    var out = JSON.stringify(event);
+    return {
+        "body":out
+    };
+};
+
+## Event Object Input:
+
+{
+    "resource": "/",
+    "path": "/",
+    "httpMethod": "GET",
+    "headers": null,
+    "multiValueHeaders": null,
+    "queryStringParameters": null,
+    "multiValueQueryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "path": "/",
+        "accountId": "219647033290",
+        "resourceId": "qnrf1zhitk",
+        "stage": "test-invoke-stage",
+        "requestId": "a1d94988-c544-11e8-a781-f941ff0acabb",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "cognitoIdentityId": null,
+            "apiKey": "test-invoke-api-key",
+            "cognitoAuthenticationType": null,
+            "userArn": "arn:aws:iam::219647033290:root",
+            "apiKeyId": "test-invoke-api-key-id",
+            "userAgent": "aws-internal/3 aws-sdk-java/1.11.398 Linux/4.9.119-0.1.ac.277.71.329.metal1.x86_64 OpenJDK_64-Bit_Server_VM/25.181-b13 java/1.8.0_181",
+            "accountId": "219647033290",
+            "caller": "219647033290",
+            "sourceIp": "test-invoke-source-ip",
+            "accessKey": "ASIATGI73X7FIVAFRYRO",
+            "cognitoAuthenticationProvider": null,
+            "user": "219647033290"
+        },
+        "resourcePath": "/",
+        "httpMethod": "GET",
+        "extendedRequestId": "OEsVeGRWPHcFtlg=",
+        "apiId": "03bxe5x081"
+    },
+    "body": null,
+    "isBase64Encoded": false
+}

@@ -1,0 +1,60 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "mock test template",
+    "Resources": {
+        "MockApi": {
+            "Type": "AWS::ApiGateway::RestApi",
+            "Properties": {
+                "Name": "Mock Test",
+                "Description": "Set up a mock endpoint"
+            }
+        },
+        "MockResource": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+                "RestApiId": {
+                    "Ref": "MockApi"
+                },
+                "ParentId": {
+                    "Fn::GetAtt": [
+                        "MockApi",
+                        "RootResourceId"
+                    ]
+                },
+                "PathPart": "mock"
+            }
+        },
+        "MockMethod": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+                "RestApiId": {
+                    "Ref": "MockApi"
+                },
+                "ResourceId": {
+                    "Ref": "MockResource"
+                },
+                "HttpMethod": "GET",
+                "AuthorizationType": "NONE",
+                "Integration": {
+                    "Type": "MOCK",
+                    "RequestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "IntegrationResponses": [
+                        {
+                            "StatusCode": 200,
+                            "ResponseTemplates": {
+                                "application/json": "{\"status\":\"successful\"}"
+                            }
+                        }
+                    ]
+                },
+                "MethodResponses": [
+                    {
+                        "StatusCode": 200
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "We doin it",
+    "Parameters": {
+        "s3BucketName": {
+            "Type": "String",
+            "Default": "freedom-bucket"
+        }
+    },
+    "Resources": {
+        "S3Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": {
+                    "Ref": "s3BucketName"
+                }
+            }
+        }
+    },
+    "Outputs": {
+        "s3Url": {
+            "Description": "The Url of the newly created bucket.",
+            "Value": {
+                "Fn::Join": [
+                    "",
+                    [
+                        "https://s3-",
+                        {
+                            "Ref": "AWS::Region"
+                        },
+                        ".amazonaws.com/",
+                        {
+                            "Ref": "S3Bucket"
+                        },
+                        "/"
+                    ]
+                ]
+            }
+        }
+    }
+}
